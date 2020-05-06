@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5E94DF2-464A-45E3-8F5C-9716051BFC38}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Emulator</RootNamespace>
+    <AssemblyName>Emulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chip8Commands\BaseCommand.cs" />
+    <Compile Include="Chip8Commands\xFX07.cs" />
+    <Compile Include="Chip8Commands\x8XYE.cs" />
+    <Compile Include="Chip8Commands\x00EE.cs" />
+    <Compile Include="Chip8Commands\x00E0.cs" />
+    <Compile Include="Chip8Commands\x1NNN.cs" />
+    <Compile Include="Chip8Commands\x2NNN.cs" />
+    <Compile Include="Chip8Commands\x3XNN.cs" />
+    <Compile Include="Chip8Commands\x4XNN.cs" />
+    <Compile Include="Chip8Commands\x5XY0.cs" />
+    <Compile Include="Chip8Commands\x6XNN.cs" />
+    <Compile Include="Chip8Commands\x7XNN.cs" />
+    <Compile Include="Chip8Commands\x8XY0.cs" />
+    <Compile Include="Chip8Commands\x8XY1.cs" />
+    <Compile Include="Chip8Commands\x8XY2.cs" />
+    <Compile Include="Chip8Commands\x8XY3.cs" />
+    <Compile Include="Chip8Commands\x8XY4.cs" />
+    <Compile Include="Chip8Commands\x8XY5.cs" />
+    <Compile Include="Chip8Commands\x8XY6.cs" />
+    <Compile Include="Chip8Commands\x8XY7.cs" />
+    <Compile Include="Chip8Commands\x9XY0.cs" />
+    <Compile Include="Chip8Commands\xANNN.cs" />
+    <Compile Include="Chip8Commands\xBNNN.cs" />
+    <Compile Include="Chip8Commands\xCXNN.cs" />
+    <Compile Include="Chip8Commands\xDXYN.cs" />
+    <Compile Include="Chip8Commands\xEX9E.cs" />
+    <Compile Include="Chip8Commands\xEXA1.cs" />
+    <Compile Include="Chip8Commands\xFX0A.cs" />
+    <Compile Include="Chip8Commands\xFX15.cs" />
+    <Compile Include="Chip8Commands\xFX18.cs" />
+    <Compile Include="Chip8Commands\xFX1E.cs" />
+    <Compile Include="Chip8Commands\xFX29.cs" />
+    <Compile Include="Chip8Commands\xFX33.cs" />
+    <Compile Include="Chip8Commands\xFX55.cs" />
+    <Compile Include="Chip8Commands\xFX65.cs" />
+    <Compile Include="Chip8.cs" />
+    <Compile Include="Models\EmulatorModes.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Utils\Benchmark.cs" />
+    <Compile Include="Utils\Compiler.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\CustomItem.cs" />
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\Interpreter.cs" />
+    <Compile Include="Utils\ProcessorCycle.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Games\invaders.c8">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Games\Pong!.xex">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Games\pong2.c8">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Games\tetris.c8">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
